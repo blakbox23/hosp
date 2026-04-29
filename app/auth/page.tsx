@@ -1,13 +1,33 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 
+/**
+ * Outer page wrapped in Suspense
+ */
 export default function AuthPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-[calc(100vh-200px)] flex items-center justify-center">
+          <div className="text-sm text-muted-foreground">Loading...</div>
+        </div>
+      }
+    >
+      <AuthPageContent />
+    </Suspense>
+  );
+}
+
+/**
+ * Actual component using useSearchParams
+ */
+function AuthPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { login, signup, isLoading } = useAuth();
@@ -30,16 +50,16 @@ export default function AuthPage() {
           setError('Please fill in all fields');
           return;
         }
+
         await login(email, password);
-        // Redirect to the specified URL (checkout by default) for login
         router.push(redirectUrl);
       } else {
         if (!email || !password || !name) {
           setError('Please fill in all fields');
           return;
         }
+
         await signup(email, name, password);
-        // Redirect to profile completion for signup
         router.push('/profile');
       }
     } catch (err) {
@@ -51,7 +71,10 @@ export default function AuthPage() {
     <div className="min-h-[calc(100vh-200px)] bg-background flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <div className="bg-card rounded-lg shadow-lg p-8 border border-border">
-          <h1 className="text-2xl font-bold text-foreground text-center mb-2">FreshMeals</h1>
+          <h1 className="text-2xl font-bold text-foreground text-center mb-2">
+            FreshMeals
+          </h1>
+
           <p className="text-muted-foreground text-center mb-8">
             {mode === 'login' ? 'Welcome back' : 'Join our community'}
           </p>
@@ -59,6 +82,7 @@ export default function AuthPage() {
           {/* Tab Toggle */}
           <div className="flex gap-2 mb-6 bg-muted p-1 rounded-lg">
             <button
+              type="button"
               onClick={() => {
                 setMode('login');
                 setError('');
@@ -71,7 +95,9 @@ export default function AuthPage() {
             >
               Login
             </button>
+
             <button
+              type="button"
               onClick={() => {
                 setMode('signup');
                 setError('');
@@ -97,9 +123,13 @@ export default function AuthPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             {mode === 'signup' && (
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-foreground mb-1"
+                >
                   Full Name
                 </label>
+
                 <Input
                   id="name"
                   type="text"
@@ -113,9 +143,13 @@ export default function AuthPage() {
             )}
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-foreground mb-1"
+              >
                 Email Address
               </label>
+
               <Input
                 id="email"
                 type="email"
@@ -128,9 +162,13 @@ export default function AuthPage() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-foreground mb-1">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-foreground mb-1"
+              >
                 Password
               </label>
+
               <Input
                 id="password"
                 type="password"
@@ -149,8 +187,10 @@ export default function AuthPage() {
             >
               {isLoading ? (
                 <span className="flex items-center gap-2">
-                  <span className="inline-block w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin"></span>
-                  {mode === 'login' ? 'Logging in...' : 'Creating account...'}
+                  <span className="inline-block w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+                  {mode === 'login'
+                    ? 'Logging in...'
+                    : 'Creating account...'}
                 </span>
               ) : mode === 'login' ? (
                 'Login'
@@ -163,13 +203,17 @@ export default function AuthPage() {
           {/* Demo Info */}
           <div className="mt-6 p-4 bg-muted rounded-lg">
             <p className="text-xs text-muted-foreground">
-              <strong>Demo Mode:</strong> You can use any email and password to login or sign up. Your plan will be preserved.
+              <strong>Demo Mode:</strong> You can use any email and password
+              to login or sign up. Your plan will be preserved.
             </p>
           </div>
 
           {/* Back Link */}
           <div className="mt-6 text-center">
-            <Link href="/plan" className="text-sm text-primary hover:underline">
+            <Link
+              href="/plan"
+              className="text-sm text-primary hover:underline"
+            >
               Back to meal planning
             </Link>
           </div>
