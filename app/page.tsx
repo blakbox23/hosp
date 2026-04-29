@@ -12,7 +12,7 @@ const meals = [
     description: 'Maize ugali with slow-cooked beef stew and sautéed sukuma wiki',
     price: 1330,
     image:
-      'https://images.unsplash.com/photo-1589302168068-96466493dfb6?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80',
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const meals = [
     description: 'Succulent chicken in rich gravy with fluffy steamed rice',
     price: 900,
     image:
-      'https://images.unsplash.com/photo-1604908177474-47057223c1a2?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80',
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const meals = [
     description: 'Fragrant spiced pilau rice with fresh tomato-onion salad',
     price: 700,
     image:
-      'https://images.unsplash.com/photo-1603133872878-684f207fb84b?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=500&q=80',
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const meals = [
     description: 'Soft layered chapati with hearty kidney beans in tomato sauce',
     price: 550,
     image:
-      'https://images.unsplash.com/photo-1565557623262-b40c3c497427?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80',
   },
   {
     id: 5,
@@ -44,7 +44,7 @@ const meals = [
     description: 'Traditional mokimo with green peas and minced beef',
     price: 950,
     image:
-      'https://images.unsplash.com/photo-1586201375241-8385d375b70b?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=500&q=80',
   },
   {
     id: 6,
@@ -52,7 +52,7 @@ const meals = [
     description: 'Steamed rice with seasoned green gram (ndengu) stew',
     price: 720,
     image:
-      'https://images.unsplash.com/photo-1596797038530-2c107229604b?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=500&q=80',
   },
 ];
 
