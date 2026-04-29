@@ -1,0 +1,80 @@
+# dependencies
+node_modules
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDEs/editors
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+
+# logs
+logs
+*.log
+
+# package manager lock files (optional — usually keep one)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# local database / sqlite
+*.sqlite
+*.sqlite3
+
+# uploads / generated assets
+/public/uploads
+/public/temp
+
+# cache
+.cache/
+.eslintcache
+
+# turbo
+.turbo/
+
+
+# optional: ignore generated sitemap/rss
+/public/sitemap.xml
+/public/rss.xml
